@@ -347,7 +347,6 @@ const SongService = {
             (s.songName && s.songName.toLowerCase().includes(q)) ||
             (s.artist && s.artist.toLowerCase().includes(q)) ||
             (s.movie && s.movie.toLowerCase().includes(q)) ||
-            (s.scale && s.scale.toLowerCase().includes(q)) ||
             (s.fluteType && s.fluteType.toLowerCase().includes(q)) ||
             (Array.isArray(s.lyrics) && s.lyrics.some(l => String(l).toLowerCase().includes(q)))
           );
@@ -564,7 +563,6 @@ function buildSongCard(song, index) {
     ? `${escapeHtml(song.artist)} • ${escapeHtml(song.movie)}`
     : escapeHtml(song.artist || song.movie || 'Flute Notation');
 
-  const scaleBadge = song.scale ? `<span class="badge badge-gold">&#9834; ${escapeHtml(song.scale)}</span>` : '';
   const fluteBadge = `<span class="badge badge-teal">&#9675; ${escapeHtml(song.fluteType)}</span>`;
 
   return `
@@ -584,7 +582,6 @@ function buildSongCard(song, index) {
         <div class="song-card-icon">${icon}</div>
       </div>
       <div class="song-card-meta">
-        ${scaleBadge}
         ${fluteBadge}
       </div>
       <div class="song-card-footer">
@@ -1050,7 +1047,6 @@ function buildSongDetail(song) {
     ? `${escapeHtml(song.artist)} &bull; ${escapeHtml(song.movie)}`
     : escapeHtml(song.artist || song.movie || 'Flute Sargam');
 
-  const scaleBadge = song.scale ? `<span class="badge badge-gold">&#9834; ${escapeHtml(song.scale)}</span>` : '';
   const difficultyBadge = song.difficulty ? `<span class="badge badge-bronze">⭐ ${escapeHtml(song.difficulty)}</span>` : '';
 
   return `
@@ -1073,7 +1069,6 @@ function buildSongDetail(song) {
           <h2 class="detail-title">${escapeHtml(song.songName)}</h2>
           <div class="detail-subtitle">${subTitle}</div>
           <div class="detail-meta-tags">
-            ${scaleBadge}
             <span class="badge badge-teal">&#9675; ${escapeHtml(song.fluteType)}</span>
             ${difficultyBadge}
             <span class="badge badge-purple">&#127926; 6-Hole Flute</span>

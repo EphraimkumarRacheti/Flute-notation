@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login — Flute Notation</title>
+  <meta name="description" content="Secure administrator login portal for Flute Notation." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Favicon emoji -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎵</text></svg>" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body class="admin-login-body">
+
+  <div class="admin-login-container">
+    <div class="admin-login-card">
+
+      <!-- Website Title & Brand Lockup -->
+      <a href="index.html" class="admin-login-brand" title="Back to Flute Notation Home">
+        <span class="brand-icon" aria-hidden="true">🎵</span>
+        <span class="brand-name">Flute Notation</span>
+      </a>
+
+      <!-- Card Header -->
+      <div class="admin-login-header">
+        <span class="admin-login-badge">
+          <span class="badge-dot" aria-hidden="true"></span>
+          <span>Restricted Area</span>
+        </span>
+        <h1 class="admin-login-title">Admin Login</h1>
+        <p class="admin-login-subtitle">Sign in to manage songs and website notations</p>
+      </div>
+
+      <!-- Clean Alert / Error Box -->
+      <div id="login-alert" class="admin-login-alert" role="alert" aria-live="polite" style="display: none;">
+        <span class="admin-login-alert-icon" id="login-alert-icon" aria-hidden="true">⚠️</span>
+        <span id="login-alert-text" class="admin-login-alert-text"></span>
+      </div>
+
+      <!-- Login Form -->
+      <form id="admin-login-form" class="admin-login-form" autocomplete="on" novalidate>
+        
+        <!-- Admin Email Field -->
+        <div class="admin-form-group">
+          <label for="admin-email" class="admin-form-label">Admin Email</label>
+          <div class="admin-input-group">
+            <span class="admin-input-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </span>
+            <input
+              type="email"
+              id="admin-email"
+              name="email"
+              class="admin-login-input"
+              placeholder="admin@example.com"
+              required
+              autocomplete="email"
+              autofocus
+            />
+          </div>
+        </div>
+
+        <!-- Password Field -->
+        <div class="admin-form-group">
+          <label for="admin-password" class="admin-form-label">Password</label>
+          <div class="admin-input-group">
+            <span class="admin-input-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </span>
+            <input
+              type="password"
+              id="admin-password"
+              name="password"
+              class="admin-login-input has-toggle"
+              placeholder="••••••••••••"
+              required
+              autocomplete="current-password"
+            />
+            <button
+              type="button"
+              id="toggle-pwd-btn"
+              class="admin-pwd-toggle-btn"
+              aria-label="Toggle password visibility"
+              tabindex="-1"
+            >
+              <svg id="pwd-icon-show" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <svg id="pwd-icon-hide" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                <line x1="1" y1="1" x2="23" y2="23"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" id="admin-login-btn" class="admin-login-submit-btn">
+          <span id="btn-text">Sign In</span>
+          <span id="btn-spinner" class="admin-btn-spinner" style="display: none;" aria-hidden="true"></span>
+        </button>
+
+      </form>
+
+      <!-- Card Footer with Back Link -->
+      <div class="admin-login-footer">
+        <a href="index.html" class="admin-login-back-link">
+          <span class="back-arrow" aria-hidden="true">←</span>
+          <span>Back to public website</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Supabase JS Client SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- Admin Authentication Helper -->
+  <script src="admin-auth.js"></script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      const form = document.getElementById('admin-login-form');
+      const emailInput = document.getElementById('admin-email');
+      const passwordInput = document.getElementById('admin-password');
+      const submitBtn = document.getElementById('admin-login-btn');
+      const btnText = document.getElementById('btn-text');
+      const btnSpinner = document.getElementById('btn-spinner');
+      const alertBox = document.getElementById('login-alert');
+      const alertIcon = document.getElementById('login-alert-icon');
+      const alertText = document.getElementById('login-alert-text');
+      const togglePwdBtn = document.getElementById('toggle-pwd-btn');
+      const iconShow = document.getElementById('pwd-icon-show');
+      const iconHide = document.getElementById('pwd-icon-hide');
+
+      // Check if user is already logged in with a valid session
+      if (window.AdminAuth && typeof window.AdminAuth.redirectIfLoggedIn === 'function') {
+        window.AdminAuth.redirectIfLoggedIn();
+      }
+
+      // Password visibility toggle
+      togglePwdBtn.addEventListener('click', function () {
+        const isPassword = passwordInput.getAttribute('type') === 'password';
+        passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+        if (iconShow && iconHide) {
+          iconShow.style.display = isPassword ? 'none' : 'block';
+          iconHide.style.display = isPassword ? 'block' : 'none';
+        }
+        togglePwdBtn.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password');
+      });
+
+      // Show/hide alert utility
+      function showAlert(message, isError = true) {
+        alertText.textContent = message;
+        alertIcon.textContent = isError ? '⚠️' : '✅';
+        alertBox.className = 'admin-login-alert ' + (isError ? 'error' : 'success');
+        alertBox.style.display = 'flex';
+      }
+
+      function hideAlert() {
+        alertBox.style.display = 'none';
+        alertText.textContent = '';
+      }
+
+      // Set loading state on submit button
+      function setLoading(isLoading) {
+        submitBtn.disabled = isLoading;
+        if (isLoading) {
+          btnText.textContent = 'Signing in...';
+          btnSpinner.style.display = 'inline-block';
+        } else {
+          btnText.textContent = 'Sign In';
+          btnSpinner.style.display = 'none';
+        }
+      }
+
+      // Handle Form Submission
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        hideAlert();
+
+        const email = emailInput.value.trim();
+        const password = passwordInput.value;
+
+        if (!email) {
+          showAlert('Please enter your admin email address.');
+          emailInput.focus();
+          return;
+        }
+
+        if (!password) {
+          showAlert('Please enter your password.');
+          passwordInput.focus();
+          return;
+        }
+
+        setLoading(true);
+
+        try {
+          const result = await window.AdminAuth.login(email, password);
+
+          if (result.success) {
+            showAlert('Sign in successful. Redirecting...', false);
+            setTimeout(function () {
+              window.location.replace('admin.html');
+            }, 300);
+          } else {
+            setLoading(false);
+            showAlert(result.message || 'Invalid email or password.');
+            passwordInput.value = '';
+            passwordInput.focus();
+          }
+        } catch (err) {
+          setLoading(false);
+          showAlert('Invalid email or password.');
+          console.error('[Admin Login] Exception:', err);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
