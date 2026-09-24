@@ -1,0 +1,107 @@
+[
+  {
+    "id": 1,
+    "songName": "Kannuladha",
+    "artist": "Anirudh Ravichander",
+    "movie": "3 (Three)",
+    "scale": "G Major",
+    "fluteType": "Bansuri G Natural",
+    "difficulty": "Beginner",
+    "lyrics": [
+      "Kannuladha",
+      "Aasaladha",
+      "Buggaladha",
+      "Mudduladha"
+    ],
+    "notation": [
+      { "line": "DA GA GA DA DA", "lyric": "Kannuladha" },
+      { "line": "DA GA GA DA PA", "lyric": "Aasaladha" },
+      { "line": "DA GA GA DA DA", "lyric": "Buggaladha" },
+      { "line": "DA GA GA DA PA", "lyric": "Mudduladha" }
+    ]
+  },
+  {
+    "id": 2,
+    "songName": "Priyatama",
+    "artist": "Anirudh Ravichander",
+    "movie": "3 (Three)",
+    "scale": "C Major",
+    "fluteType": "6-Hole Flute C Middle",
+    "difficulty": "Beginner",
+    "lyrics": [
+      "Priyatama priyatama",
+      "Palikinadi",
+      "Hrudayame",
+      "Sarigama"
+    ],
+    "notation": [
+      { "line": "GA MA PA DA | GA MA PA DA", "lyric": "Priyatama priyatama" },
+      { "line": "GA MA GA RI SA", "lyric": "Palikinadi" },
+      { "line": "NI SA RE RE", "lyric": "Hrudayame" },
+      { "line": "NI SA MA GA", "lyric": "Sarigama" }
+    ]
+  },
+  {
+    "id": 3,
+    "songName": "Kesariya",
+    "artist": "Arijit Singh",
+    "movie": "Brahmastra",
+    "scale": "C Major",
+    "fluteType": "Bansuri C Middle",
+    "difficulty": "Intermediate",
+    "lyrics": [
+      "Mujhko itna bataaye koi",
+      "Kaise tujhse dil na lagaaye koi",
+      "Kesariya tera ishq hai piya",
+      "Rang jaaun jo main haath lagaun"
+    ],
+    "notation": [
+      { "line": "Sa Re Ga Ma Pa | Pa Ma Ga Re Sa", "lyric": "Mujhko itna bataaye koi" },
+      { "line": "Sa Re Ga Ma Pa | Pa Dha Pa Ma Ga", "lyric": "Kaise tujhse dil na lagaaye koi" },
+      { "line": "Pa Dha Ni Sa' | Sa' Ni Dha Pa Ma", "lyric": "Kesariya tera ishq hai piya" },
+      { "line": "Pa Dha Ni Sa' Re' | Sa' Ni Dha Pa", "lyric": "Rang jaaun jo main haath lagaun" }
+    ]
+  },
+  {
+    "id": 4,
+    "songName": "River Song",
+    "artist": "Hariprasad Chaurasia",
+    "movie": "Flowing Waters",
+    "scale": "G Major",
+    "fluteType": "6-Hole Classical Bansuri",
+    "difficulty": "Intermediate",
+    "lyrics": [
+      "Flowing waters, singing free,",
+      "Dancing waves for you and me,",
+      "Under skies of blue and gold,",
+      "Stories by the river told."
+    ],
+    "notation": [
+      { "line": "Pa Pa Dha | Ni Sa' Ni | Dha Pa Ma | Ga Ma Pa", "lyric": "Flow-ing wa-ters, sing-ing free," },
+      { "line": "Pa Ma Ga | Re Ga Ma | Ma Ga Re | Sa -- --", "lyric": "Dan-cing waves for you and me," },
+      { "line": "Sa Re Ga | Ma Pa Dha | Ni Dha Pa | Ma Ga Re", "lyric": "Un-der skies of blue and gold," },
+      { "line": "Re Ma Ga | Re Sa Ni | Sa Re Ga | Sa -- --", "lyric": "Sto-ries by the ri-ver told." }
+    ]
+  },
+  {
+    "id": 5,
+    "songName": "Twilight Melody",
+    "artist": "Shivkumar Sharma",
+    "movie": "Evening Raga",
+    "scale": "D Minor",
+    "fluteType": "6-Hole Bamboo Flute",
+    "difficulty": "Advanced",
+    "lyrics": [
+      "As twilight fades and stars appear,",
+      "A melody drifts soft and clear,",
+      "The flute sings out across the night,",
+      "Filling the world with golden light."
+    ],
+    "notation": [
+      { "line": "Ga Ma Dha | Ni Sa' Re' | Sa' Ni Dha | Pa Ma Ga", "lyric": "As twi-light fades and stars ap-pear," },
+      { "line": "Ma Ga Re | Sa Ni Dha | Pa Ma Ga | Re Sa --", "lyric": "A me-lo-dy drifts soft and clear," },
+      { "line": "Sa Re Ma | Ga Ma Pa | Dha Ni Sa' | Ni Dha Pa", "lyric": "The flute sings out a-cross the night," },
+      { "line": "Ma Pa Dha | Ni Sa' -- | Re' Sa' Ni | Sa' -- --", "lyric": "Fill-ing the world with gold-en light." }
+    ]
+  }
+]

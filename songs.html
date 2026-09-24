@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Songs — Flute Notation</title>
+  <meta name="description" content="Browse and search all available flute notations. Find sargam notation for your favourite songs arranged for 6-hole flute." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎵</text></svg>" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <a href="index.html" class="nav-brand">
+      <span class="brand-icon">🎵</span>
+      Flute Notation
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="songs.html">Songs</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><button id="nav-chart-btn" class="nav-chart-btn" aria-label="Open 6-Hole Flute Finger Chart">🕳️ Finger Chart</button></li>
+      <li><button id="supabase-config-btn" class="nav-db-btn" aria-label="Configure Supabase Database">⚡ Supabase</button></li>
+    </ul>
+
+    <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="songs.html">Songs</a>
+    <a href="about.html">About</a>
+    <a href="#" id="mobile-chart-btn">🕳️ Finger Chart</a>
+    <a href="#" id="mobile-supabase-config-btn">⚡ Supabase Setup</a>
+  </nav>
+
+  <!-- ===== PAGE HERO ===== -->
+  <header class="page-hero" role="banner">
+    <div class="notes-deco" aria-hidden="true"></div>
+    <p class="badge badge-bronze" style="display:inline-flex;margin-bottom:0.85rem;">🎼 Sargam Database</p>
+    <h1 class="page-hero-title">Browse <span>Notations</span></h1>
+    <p class="page-hero-sub">Search and explore all available flute notations from database.</p>
+
+    <!-- Search on songs page -->
+    <div style="margin-top:1.5rem;display:flex;justify-content:center;">
+      <div class="search-wrapper" style="max-width:480px;">
+        <span class="search-icon" aria-hidden="true">🔍</span>
+        <input
+          id="songs-search-input"
+          class="search-input"
+          type="search"
+          placeholder="Filter songs by name, artist..."
+          autocomplete="off"
+          aria-label="Filter songs"
+        />
+        <button id="songs-search-btn" class="search-btn">Search</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main class="container" style="padding-top:2.5rem;padding-bottom:4rem;">
+
+    <!-- Songs list section -->
+    <section id="songs-section" aria-label="Song list">
+      <div id="songs-area">
+        <!-- Skeleton placeholders while loading -->
+        <div class="cards-grid">
+          <div class="song-card skeleton" style="height:160px;"></div>
+          <div class="song-card skeleton" style="height:160px;"></div>
+          <div class="song-card skeleton" style="height:160px;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Song detail section (hidden by default) -->
+    <section id="detail-section" style="display:none;" aria-label="Song detail">
+      <div id="detail-area">
+        <!-- Populated by script.js -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== QUICK FINGER CHART MODAL ===== -->
+  <div id="chart-modal" class="modal-overlay" style="display:none;" aria-hidden="true">
+    <div class="modal-card">
+      <button id="chart-modal-close-btn" class="modal-close" aria-label="Close finger chart modal">&times;</button>
+      <div id="modal-finger-chart-container">
+        <!-- Populated dynamically by script.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SUPABASE CONFIG MODAL ===== -->
+  <div id="supabase-modal" class="modal-overlay" style="display:none;" aria-hidden="true">
+    <div class="modal-card">
+      <button id="modal-close-btn" class="modal-close" aria-label="Close modal">&times;</button>
+      <div class="modal-header">
+        <span class="modal-icon">⚡</span>
+        <h3>Supabase Connection Settings</h3>
+      </div>
+      <p class="modal-desc">
+        Connect to your Supabase project to search real-time song notes from your database.
+      </p>
+      <form id="supabase-form">
+        <div class="form-group">
+          <label for="supabase-url-input">Supabase Project URL</label>
+          <input type="url" id="supabase-url-input" placeholder="https://your-project.supabase.co" required />
+        </div>
+        <div class="form-group">
+          <label for="supabase-key-input">Supabase Anon Key</label>
+          <input type="text" id="supabase-key-input" placeholder="eyJhbGciOiJIUzI1NiIsIn..." required />
+        </div>
+        <div id="supabase-status-msg" class="status-msg" style="display:none;"></div>
+        <div class="modal-actions">
+          <button type="submit" class="btn btn-primary" style="flex:1;">Save &amp; Connect</button>
+          <button type="button" id="supabase-disconnect-btn" class="btn btn-ghost" style="color:var(--clr-accent-rose)">Clear</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <p>Made with <span>♥</span> for flute players &nbsp;|&nbsp; <span>Flute Notation</span> &copy; 2025</p>
+    </div>
+  </footer>
+
+  <!-- Supabase JS Client SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js"></script>
+</body>
+</html>
