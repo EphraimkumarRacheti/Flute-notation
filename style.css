@@ -29,7 +29,7 @@
   /* Typography */
   --font-main:          'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-heading:       'Cormorant Garamond', 'Georgia', serif;
-  --font-mono:          'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  --font-mono:          'JetBrains Mono', 'IBM Plex Mono', 'Roboto Mono', 'Fira Code', 'Courier New', monospace;
 
   /* Spacing & Borders */
   --radius-sm:          6px;
@@ -477,9 +477,11 @@ ul { list-style: none; }
 }
 .notation-sheet-header h3 {
   font-family: var(--font-heading);
-  font-size: 1.45rem;
-  font-weight: 700;
-  color: var(--clr-primary);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--clr-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 /* Pure Vertical Presentation for Lyric + Notation Pairs */
@@ -507,6 +509,16 @@ ul { list-style: none; }
 
 /* Notation Line: second line, monospaced, prominent notes */
 .notation-notes {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--clr-primary);
+  line-height: 1.9;
+  letter-spacing: 0.04em;
+  word-spacing: 0.25rem;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
   font-family: var(--font-mono);
   font-size: 1.2rem;
   font-weight: 700;
@@ -1139,6 +1151,59 @@ ul { list-style: none; }
   border-top: 1px solid var(--clr-border);
 }
 .detail-item { display: flex; flex-direction: column; }
+
+/* About info grid container */
+.about-me-details {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  min-width: 0;
+}
+
+/* Ensure email link stays on one line */
+.about-me-details .detail-value a.email-link {
+  white-space: nowrap;
+}
+
+
+/* Labels */
+.about-me-details .detail-label {
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--clr-text-muted);
+  margin-bottom: 0.25rem;
+}
+
+/* Values */
+.about-me-details .detail-value {
+  font-size: 0.92rem;
+  color: var(--clr-text);
+  overflow-wrap: anywhere;
+}
+
+/* Links styling */
+.about-me-details .detail-value a {
+  color: var(--clr-accent);
+  text-decoration: none;
+}
+.about-me-details .detail-value a:hover,
+.about-me-details .detail-value a:focus {
+  text-decoration: underline;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1024px) {
+  .about-me-details {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  .about-me-details {
+    grid-template-columns: 1fr;
+  }
+}
 .detail-label {
   font-size: 0.75rem;
   font-weight: 700;
